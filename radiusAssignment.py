@@ -50,11 +50,11 @@ def clicked():
     last7DaysOpenRequests = json.loads(response.content)['total_count']
     listbox.insert(END, 'Total')
     listbox.insert(END, totalOpenRequests)
-    listbox.insert(END, 'Last 24 Hours')
+    listbox.insert(END, '< 24 Hours')
     listbox.insert(END, last24HourOpenRequests)
-    listbox.insert(END, 'More than 24 Hours Less than 7 Days')
+    listbox.insert(END, '> 24 Hours < 7 Days')
     listbox.insert(END, last7DaysOpenRequests - last24HourOpenRequests)
-    listbox.insert(END, 'More than 7 Days')
+    listbox.insert(END, '> 7 Days')
     listbox.insert(END, totalOpenRequests - last7DaysOpenRequests)
 
     # for i in range(100):
