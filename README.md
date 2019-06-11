@@ -21,17 +21,17 @@ Github repo URL
 ## Design
 - Html makes async call to flask rest api, provides github repo url in the request body.
 - Backend python flask, makes 3 github API calls
-	[1] To get all open issues count
-	[2] To get open issues created in last 24 hours
-	[3] To get open issues created in last 7 days
+	- To get all open issues count
+	- To get open issues created in last 24 hours
+	- To get open issues created in last 7 days
 - These 3 are sufficient to get the required data.
-- Flask service returns the response in json, html displays te data.
+- Flask service returns the response in json, html displays the data.
 
 
 ## Suggested improvements.
 - UI could be improved a lot better, to handle error cases for invalid URLs etc
 - Autocomplete could be implemented for all repos of particular github account.
-- Request/Response design od flask backend could be improved to handle additional type of queries.
+- Request/response design of flask backend could be improved to handle additional type of queries.
 - Appropriate error code should be returned in case of error/exception.
-- Some data couild be cached, for example for given problem statements, open issues more than 7 days could be cached for another 7 days, which wont change.
+- Some data couild be cached, for example for given problem statement, open issues more than 7 days could be cached for another 7 days, which wont change.
 - Links to the recent actual issues could be provided.
