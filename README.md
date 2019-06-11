@@ -15,8 +15,8 @@ Github repo URL
 [4] Open issues created before 7 days
 
 ## Tech
-Front end - Basic Html page hosted on apache2 server
-Backend - Python flask framework for rest interface
+### Front end - Basic Html page hosted on apache2 server
+### Backend - Python flask framework for rest interface
 
 ## Design
 - Html makes async call to flask rest api, provides github repo url in the request body.
