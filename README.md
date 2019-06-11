@@ -1,10 +1,15 @@
 # radius
 
 Github open issues basic web app.
+
 Input - Github repo URL
-Outut - 
+
+Output 
+
 [1] Total open issues count
+
 [2] Open issues created in last 24 hours
+
 [3] Open issues created before 24 hours and before 7 days
 
 Front end- Basic Html page hosted on apache2 server
