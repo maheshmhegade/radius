@@ -48,7 +48,7 @@ def issues():
 	issuesRequest['since'] = last7DaysTimeStamp
 	last7DaysIssuesCount = getIssuesCount(issuesRequest)
 
-	return jsonify({'total': (totalIssuesCount), 'last24Hour' : int(last24HourIssuesCount), 'last7DaysExcludingLast24Hour': (int(last7DaysIssuesCount)-int(last24HourIssuesCount)) })
+	return jsonify({'total': (totalIssuesCount), 'last24Hour' : int(last24HourIssuesCount), 'last7DaysExcludingLast24Hour': (int(last7DaysIssuesCount)-int(last24HourIssuesCount)), 'morethan7Days': (int(totalIssuesCount) - int(last7DaysIssuesCount)) })
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')

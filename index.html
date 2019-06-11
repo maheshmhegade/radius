@@ -5,6 +5,7 @@
 function temp(form)
 {
 const userAction = async () => {
+  // Had to use public IP, it was giving error for localhost, still need to know the exact issue
   const response = await fetch('http://35.193.33.178:5000/issues/count', {
     method: 'POST',
     body: JSON.stringify({'repourl': form.URL.value}) // string or object
@@ -13,33 +14,66 @@ const userAction = async () => {
   return myJson;
   // do something with myJson
 };
+
+var datatale = document.getElementById('datatale');
+
   userAction().then(myjson => {
-  form.total.value = myjson.total;
-  form.last24hour.value = myjson.last24Hour;
-  form.last7days.value = myjson.last7DaysExcludingLast24Hour;
+datatale.rows[1].cells[0].innerHTML = myjson.total;
+datatale.rows[1].cells[1].innerHTML = myjson.last24Hour;
+datatale.rows[1].cells[2].innerHTML = myjson.last7DaysExcludingLast24Hour;
+datatale.rows[1].cells[3].innerHTML = myjson.morethan7Days;
+  // form.total.value = myjson.total;
+  // form.last24hour.value = myjson.last24Hour;
+  // form.last7days.value = myjson.last7DaysExcludingLast24Hour;
 });
 }
 // done hiding from old browsers -->
 </script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 </head>
+
 <body>
 <FORM>
 <h2>Github Open Issues Count</h2>
 Enter a Github URL: 
 <INPUT NAME="URL" VALUE="" MAXLENGTH="80" SIZE=100>
 <p>
-Click this button to get Open Issues Count:
-<INPUT NAME="calc" VALUE="Issue Count" TYPE=BUTTON 
+<INPUT NAME="calc" VALUE="Get Count" TYPE=BUTTON 
 onClick=temp(this.form)>
 <p>
-Total open issues: 
-<INPUT NAME="total" READONLY SIZE=15>
-<p>
-Open issues created in last 24 hours: 
-<INPUT NAME="last24hour" READONLY SIZE=15>
-<p>
-Open issues created in last 7 days excluding last 24 hours: 
-<INPUT NAME="last7days" READONLY SIZE=15>
 </FORM>
+<h2>Issues Count</h2>
+
+<table id="datatale">
+  <tr>
+    <th>Total</th>
+    <th>Last 24 hours</th>
+    <th>Last 7 days excluding last 24 hours</th>
+    <th>More than 7 days</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 </body>
 </html>
