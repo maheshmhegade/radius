@@ -30,7 +30,8 @@ def getIssuesCount(issuesRequest):
 		url += ('+created:>' + created)
 	## calls github API
 	response = requests.get(url)
-	return json.loads(response.content)['total_count']
+	totalCount = json.loads(response.content)['total_count']
+	return int(totalCount)
 
 @app.route('/issues/count', methods=['POST'])
 def issues():
@@ -49,7 +50,7 @@ def issues():
 	issuesRequest['since'] = last7DaysTimeStamp
 	last7DaysIssuesCount = getIssuesCount(issuesRequest)
 
-	return jsonify({'total': (totalIssuesCount), 'last24Hour' : int(last24HourIssuesCount), 'last7DaysExcludingLast24Hour': (int(last7DaysIssuesCount)-int(last24HourIssuesCount)), 'morethan7Days': (int(totalIssuesCount) - int(last7DaysIssuesCount)) })
+	return jsonify({'total': (totalIssuesCount), 'last24Hour' : last24HourIssuesCount, 'last7DaysExcludingLast24Hour': (last7DaysIssuesCount-last24HourIssuesCount), 'morethan7Days': (totalIssuesCount - last7DaysIssuesCount) })
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')
