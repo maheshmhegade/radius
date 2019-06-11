@@ -1,0 +1,45 @@
+<html>
+<head>
+<script language="JavaScript">
+<!-- hide this script from old browsers
+function temp(form)
+{
+const userAction = async () => {
+  const response = await fetch('http://35.193.33.178:5000/issues/count', {
+    method: 'POST',
+    body: JSON.stringify({'repourl': form.URL.value}) // string or object
+  });
+  const myJson = await response.json(); //extract JSON from the http response
+  return myJson;
+  // do something with myJson
+};
+  userAction().then(myjson => {
+  form.total.value = myjson.total;
+  form.last24hour.value = myjson.last24Hour;
+  form.last7days.value = myjson.last7DaysExcludingLast24Hour;
+});
+}
+// done hiding from old browsers -->
+</script>
+</head>
+<body>
+<FORM>
+<h2>Github Open Issues Count</h2>
+Enter a Github URL: 
+<INPUT NAME="URL" VALUE="" MAXLENGTH="80" SIZE=100>
+<p>
+Click this button to get Open Issues Count:
+<INPUT NAME="calc" VALUE="Issue Count" TYPE=BUTTON 
+onClick=temp(this.form)>
+<p>
+Total open issues: 
+<INPUT NAME="total" READONLY SIZE=15>
+<p>
+Open issues created in last 24 hours: 
+<INPUT NAME="last24hour" READONLY SIZE=15>
+<p>
+Open issues created in last 7 days excluding last 24 hours: 
+<INPUT NAME="last7days" READONLY SIZE=15>
+</FORM>
+</body>
+</html>
