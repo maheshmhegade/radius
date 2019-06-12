@@ -5,6 +5,8 @@
 ## Input  
 Github repo URL
 
+Example - https://github.com/Exiv2/exiv2
+
 ## Output 
 [1] Total open issues count
 
@@ -13,6 +15,9 @@ Github repo URL
 [3] Open issues created before 24 hours and less than 7 days
 
 [4] Open issues created before 7 days
+
+Sample output
+![alt text](https://github.com/maheshmhegade/radius/blob/master/demo.png)
 
 ## Tech
 ### Front end - Basic Html page hosted on apache2 server
